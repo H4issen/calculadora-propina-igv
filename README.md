@@ -1,50 +1,60 @@
-# React + TypeScript + Vite
+# Calculadora de Precio y Consumo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web interactiva para calcular el total de un pedido con **IGV (18%) incluido**, ideal para restaurantes, bares y negocios de comida en Perú.
 
-Currently, two official plugins are available:
+Construida con **React + TypeScript + Vite + Tailwind CSS**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidad
 
-## Expanding the ESLint configuration
+- Menú de productos con precios en soles (PEN)
+- Agrega productos al pedido con un clic
+- Si el producto ya está en la orden, aumenta la cantidad automáticamente
+- Elimina productos individualmente
+- Cálculo automático del total con **IGV (18%)** sobre cada item
+- Formato de moneda en soles peruanos (`S/`)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Captura
 
-- Configure the top-level `parserOptions` property like this:
+┌─────────────────────────┐  ┌──────────────────────┐
+│         Menú            │  │      Tu Pedido       │
+│                         │  │                      │
+│ Pizza a la Leña Chica   │  │ Pizza Mediana x2     │
+│ S/30.00  Agregar      │  │ S/100.00             │
+│                         │  │ Jugo Naranja x1      │
+│ Rib Eye 800g            │  │ S/15.00              │
+│ S/100.00 Agregar      │  │                      │
+│                         │  │ Total: S/135.70      │
+│ ...                     │  │ (incluye IGV 18%)    │
+└─────────────────────────┘  └──────────────────────┘
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Stack
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+| Tecnología   | Uso                    |
+|--------------|------------------------|
+| React 18     | UI                     |
+| TypeScript   | Tipado seguro          |
+| Vite         | Build tool             |
+| Tailwind CSS | Estilos                |
+| gh-pages     | Deploy a GitHub Pages  |
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Instalación
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+```bash
+npm install
+npm run dev
+Deploy
+npm run deploy
+Estructura
+src/
+├── components/
+│   ├── menuItem.tsx        → Item individual del menú
+│   ├── orderContents.tsx   → Lista del pedido actual
+│   └── orderTotals.tsx     → Cálculo del total con IGV
+├── data/
+│   └── db.ts               → Datos del menú
+├── helpers/
+│   └── index.ts            → Formateo de moneda
+├── hooks/
+│   └── useOrder.ts         → Lógica del pedido (estado)
+└── types/
+    └── index.ts            → Tipos TypeScript
