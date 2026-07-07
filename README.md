@@ -1,60 +1,34 @@
-# Calculadora de Precio y Consumo
+# Calculadora de Precio y Consumo — Con IGV incluido
 
-Aplicación web interactiva para calcular el total de un pedido con **IGV (18%) incluido**, ideal para restaurantes, bares y negocios de comida en Perú.
+¿Sigues calculando precios con IGV en una calculadora de mano o en tu cabeza? Esta app web te permite armar pedidos y ver el total con **IGV (18%)** al instante, sin errores ni aproximaciones.
 
-Construida con **React + TypeScript + Vite + Tailwind CSS**.
+## ¿Qué hace?
 
-## Funcionalidad
+Selecciona productos del menú, la app arma la cuenta y te muestra el **total final con IGV incluido**. Si agregas el mismo producto dos veces, se acumula la cantidad. Todo en tiempo real.
 
-- Menú de productos con precios en soles (PEN)
-- Agrega productos al pedido con un clic
-- Si el producto ya está en la orden, aumenta la cantidad automáticamente
-- Elimina productos individualmente
-- Cálculo automático del total con **IGV (18%)** sobre cada item
-- Formato de moneda en soles peruanos (`S/`)
+## ¿Qué problemas resuelve?
 
-## Captura
+| Sin esta app                           | Con esta app                          |
+|----------------------------------------|---------------------------------------|
+| Calculas IGV manual = errores y pérdidas | El IGV se aplica automáticamente     |
+| Tardas en darle el total al cliente    | El total aparece al instante          |
+| No tienes un registro digital del pedido | Cada orden queda registrada mientras la armas |
+| Dependes de POS costosos o complejos   | Funciona en cualquier navegador, sin instalar nada |
 
-┌─────────────────────────┐  ┌──────────────────────┐
-│         Menú            │  │      Tu Pedido       │
-│                         │  │                      │
-│ Pizza a la Leña Chica   │  │ Pizza Mediana x2     │
-│ S/30.00  Agregar      │  │ S/100.00             │
-│                         │  │ Jugo Naranja x1      │
-│ Rib Eye 800g            │  │ S/15.00              │
-│ S/100.00 Agregar      │  │                      │
-│                         │  │ Total: S/135.70      │
-│ ...                     │  │ (incluye IGV 18%)    │
-└─────────────────────────┘  └──────────────────────┘
+## Posibles mejoras futuras
 
-## Stack
+- Catálogo de productos editable desde un panel
+- Múltiples mesas o pedidos simultáneos
+- Generación de boleta o factura electrónica
+- Sincronización con base de datos para persistencia
+- Modo oscuro y personalización de colores
+- Exportar pedido a PDF o WhatsApp
 
-| Tecnología   | Uso                    |
-|--------------|------------------------|
-| React 18     | UI                     |
-| TypeScript   | Tipado seguro          |
-| Vite         | Build tool             |
-| Tailwind CSS | Estilos                |
-| gh-pages     | Deploy a GitHub Pages  |
+## Stack técnico
 
-## Instalación
+React + TypeScript + Vite + Tailwind CSS. Desplegable en GitHub Pages con un solo comando.
 
 ```bash
 npm install
-npm run dev
-Deploy
-npm run deploy
-Estructura
-src/
-├── components/
-│   ├── menuItem.tsx        → Item individual del menú
-│   ├── orderContents.tsx   → Lista del pedido actual
-│   └── orderTotals.tsx     → Cálculo del total con IGV
-├── data/
-│   └── db.ts               → Datos del menú
-├── helpers/
-│   └── index.ts            → Formateo de moneda
-├── hooks/
-│   └── useOrder.ts         → Lógica del pedido (estado)
-└── types/
-    └── index.ts            → Tipos TypeScript
+npm run dev      # desarrollo
+npm run deploy   # publicar
